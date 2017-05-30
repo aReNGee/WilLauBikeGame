@@ -1,2 +1,0 @@
-# WilLauBikeGame
-Currently Prototype stage
