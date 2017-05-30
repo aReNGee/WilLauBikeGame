@@ -2,5 +2,125 @@
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
-    <events />
+    <events>
+        <variable constant="0" name="LastTapped" sid="762370902112326" static="0" type="text"></variable>
+        <event-group description="" sid="920007584596481" title="Pedaling">
+            <sub-events>
+                <event-block sid="284192822946393">
+                    <conditions>
+                        <condition id="17" name="On tap object" sid="260976105421113" type="Touch">
+                            <param id="0" name="Object">Sprite</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="185023849598991" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Value">&quot;L&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="455544654682496" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="693447770464558">
+                    <conditions>
+                        <condition id="17" name="On tap object" sid="846530357523665" type="Touch">
+                            <param id="0" name="Object">Sprite2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="499993731365218" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Value">&quot;R&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="662166248141527" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Left Arrow</comment>
+                <event-block sid="590281559447337">
+                    <conditions>
+                        <condition id="4" name="On key code pressed" sid="716642537097215" type="Keyboard">
+                            <param id="0" name="Keycode">37</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="761927860082475" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Value">&quot;L&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="458368396597373" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Right Arrow</comment>
+                <event-block sid="341693328843180">
+                    <conditions>
+                        <condition id="4" name="On key code pressed" sid="536326424312822" type="Keyboard">
+                            <param id="0" name="Keycode">39</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="364692709573647" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Value">&quot;R&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="697667713863645" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="648652201541465">
+                    <conditions>
+                        <condition id="0" name="On function" sid="592297007473988" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="578150718096707" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;L&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="187010263822420" type="Sprite">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="854990629381059" type="Sprite2">
+                            <param id="0" name="Animation">&quot;Animation2&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="396005379646177">
+                    <conditions>
+                        <condition id="0" name="On function" sid="351046265481542" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="545296383696371" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;R&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="325579247286886" type="Sprite">
+                            <param id="0" name="Animation">&quot;Animation2&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="653833047849891" type="Sprite2">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
 </c2eventsheet>
