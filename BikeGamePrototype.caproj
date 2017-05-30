@@ -13,9 +13,14 @@
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Spritefont2" version="1">Sprite font</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
-    <used-behaviors />
+    <used-behaviors>
+        <behavior author="Scirra" id="Pathfinding" version="1">Pathfinding</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+    </used-behaviors>
     <used-effects />
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
@@ -43,7 +48,7 @@
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
     <object-folder>
-        <object-type name="Sprite" sid="260087925315706">
+        <object-type name="LeftPedal" sid="260087925315706">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="462062964719932" speed="5">
@@ -54,7 +59,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Sprite2" sid="290748886798890">
+        <object-type name="RightPedal" sid="290748886798890">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="241340470448002" speed="5">
@@ -73,6 +78,124 @@
         </object-type>
         <object-type name="Keyboard" sid="561158520938619">
             <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="Text" sid="104356330151198">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Brakes" sid="179738947739601">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="494125402235106" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="Animation2" pingpong="0" repeatcount="1" repeatto="0" sid="666357762422143" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="DisplayGear" sid="374495753914296">
+            <plugin id="Spritefont2" />
+            <texture />
+        </object-type>
+        <object-type name="DisplaySpeed" sid="273045644990939">
+            <plugin id="Spritefont2" />
+            <texture />
+        </object-type>
+        <object-type name="Minimap" sid="904696062971438">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="249537242714580">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="512169835758017" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.432" y="0.224" />
+                            <point x="0.912" y="0.00799998" />
+                            <point x="0.012" y="0" />
+                            <point x="0" y="1" />
+                            <point x="0.029" y="0.898" />
+                            <point x="0.442" y="0.572" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="MinimapIcon" sid="440548238533009">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Pathfinding" sid="314849309974440">
+                    <behavior id="Pathfinding" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="741240726745782" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.196" y="0.196" />
+                            <point x="0.5" y="0.072" />
+                            <point x="0.796" y="0.204" />
+                            <point x="0.916" y="0.5" />
+                            <point x="0.792" y="0.792" />
+                            <point x="0.5" y="0.92" />
+                            <point x="0.2" y="0.8" />
+                            <point x="0.068" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Target" sid="157739822617206">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Minimap2" sid="266869492514528">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="950158119578848">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="222537787845224" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.564" y="0.324" />
+                            <point x="1" y="0.096" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0.916" />
+                            <point x="0.103" y="0.984" />
+                            <point x="0.574" y="0.648" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="CarMinimapIcon" sid="421525871343925">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Pathfinding" sid="514025915233230">
+                    <behavior id="Pathfinding" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="499198888253467" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.196" y="0.196" />
+                            <point x="0.5" y="0.072" />
+                            <point x="0.796" y="0.204" />
+                            <point x="0.916" y="0.5" />
+                            <point x="0.792" y="0.792" />
+                            <point x="0.5" y="0.92" />
+                            <point x="0.2" y="0.8" />
+                            <point x="0.068" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />

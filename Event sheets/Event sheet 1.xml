@@ -3,13 +3,22 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable constant="0" name="CONST_BRAKE_VALUE" sid="586394711326855" static="0" type="number">0.2</variable>
+        <variable constant="1" name="CONST_SPEED_DECAY" sid="120448176241342" static="0" type="number">0.025</variable>
+        <variable constant="0" name="MasterGear" sid="611249114279097" static="0" type="number">0</variable>
+        <variable constant="0" name="MasterSpeed" sid="729323905835789" static="0" type="number">0</variable>
         <variable constant="0" name="LastTapped" sid="762370902112326" static="0" type="text"></variable>
         <event-group description="" sid="920007584596481" title="Pedaling">
             <sub-events>
                 <event-block sid="284192822946393">
                     <conditions>
                         <condition id="17" name="On tap object" sid="260976105421113" type="Touch">
-                            <param id="0" name="Object">Sprite</param>
+                            <param id="0" name="Object">LeftPedal</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="470615723947143" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;L&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -26,7 +35,12 @@
                 <event-block sid="693447770464558">
                     <conditions>
                         <condition id="17" name="On tap object" sid="846530357523665" type="Touch">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">RightPedal</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="567442476870547" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;R&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -46,6 +60,11 @@
                         <condition id="4" name="On key code pressed" sid="716642537097215" type="Keyboard">
                             <param id="0" name="Keycode">37</param>
                         </condition>
+                        <condition id="-14" name="Compare variable" sid="307737183602074" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;L&quot;</param>
+                        </condition>
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="761927860082475" type="System">
@@ -63,6 +82,11 @@
                     <conditions>
                         <condition id="4" name="On key code pressed" sid="536326424312822" type="Keyboard">
                             <param id="0" name="Keycode">39</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="141391258755720" type="System">
+                            <param id="0" name="Variable">LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;R&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -88,13 +112,17 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="4" name="Set animation" sid="187010263822420" type="Sprite">
+                        <action id="4" name="Set animation" sid="187010263822420" type="LeftPedal">
                             <param id="0" name="Animation">&quot;Default&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action id="4" name="Set animation" sid="854990629381059" type="Sprite2">
+                        <action id="4" name="Set animation" sid="854990629381059" type="RightPedal">
                             <param id="0" name="Animation">&quot;Animation2&quot;</param>
                             <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="169581334637270" type="System">
+                            <param id="0" name="Variable">MasterSpeed</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                     </actions>
                 </event-block>
@@ -110,13 +138,264 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="4" name="Set animation" sid="325579247286886" type="Sprite">
+                        <action id="4" name="Set animation" sid="325579247286886" type="LeftPedal">
                             <param id="0" name="Animation">&quot;Animation2&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action id="4" name="Set animation" sid="653833047849891" type="Sprite2">
+                        <action id="4" name="Set animation" sid="653833047849891" type="RightPedal">
                             <param id="0" name="Animation">&quot;Default&quot;</param>
                             <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="280642529899095" type="System">
+                            <param id="0" name="Variable">MasterSpeed</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="964728890375934">
+                    <conditions>
+                        <condition id="0" name="On function" sid="488146992104086" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Brake&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="288300265811997" type="System">
+                            <param id="0" name="Variable">MasterSpeed</param>
+                            <param id="1" name="Value">CONST_BRAKE_VALUE</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="771703764464427" type="Brakes">
+                            <param id="0" name="Animation">&quot;Animation2&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="774403312204066">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="184388073288732" type="Touch">
+                            <param id="0" name="Object">Brakes</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="946884470530787" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Brake&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="399836280346697">
+                    <conditions>
+                        <condition id="5" name="Key code is down" sid="921669598102315" type="Keyboard">
+                            <param id="0" name="Keycode">40</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="878641273256121" type="BikeMovement">
+                            <param id="0" name="Name">&quot;Brake&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="792059340372782">
+                    <conditions>
+                        <condition id="6" name="On key code released" sid="268693509029622" type="Keyboard">
+                            <param id="0" name="Keycode">40</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="430065621558445" type="Brakes">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="264454857527584">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="904065962576956" type="Touch" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="909104678545554" type="Brakes">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="156994374092074" title="Adjusting Speed based on player input">
+            <sub-events>
+                <event-block sid="445247859374628">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="731172246008735" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="263298245604358" type="System">
+                            <param id="0" name="Variable">MasterSpeed</param>
+                            <param id="1" name="Value">CONST_SPEED_DECAY * MasterGear</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="815382027634111" type="System">
+                            <param id="0" name="Variable">MasterSpeed</param>
+                            <param id="1" name="Value">clamp(MasterSpeed,0,15)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="778508221855900" type="DisplayGear">
+                            <param id="0" name="Text">MasterGear</param>
+                        </action>
+                        <action id="0" name="Set text" sid="659217442714980" type="DisplaySpeed">
+                            <param id="0" name="Text">MasterSpeed</param>
+                        </action>
+                        <action behavior="Pathfinding" id="14" name="Set speed" sid="939570182355127" type="MinimapIcon">
+                            <param id="0" name="Speed">MasterSpeed</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="475481229007476">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="132449826516629" type="System">
+                                    <param id="0" name="Variable">MasterSpeed</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="552016294198915" type="System">
+                                    <param id="0" name="Variable">MasterGear</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="561053553854828">
+                            <conditions>
+                                <condition id="-21" name="Is between values" sid="298726808611918" type="System">
+                                    <param id="0" name="Value">MasterSpeed</param>
+                                    <param id="1" name="Lower bound">0.01</param>
+                                    <param id="2" name="Upper bound">4.99</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="756287845488750" type="System">
+                                    <param id="0" name="Variable">MasterGear</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="690091085668443">
+                            <conditions>
+                                <condition id="-21" name="Is between values" sid="538406700995063" type="System">
+                                    <param id="0" name="Value">MasterSpeed</param>
+                                    <param id="1" name="Lower bound">5</param>
+                                    <param id="2" name="Upper bound">10</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="276828429943385" type="System">
+                                    <param id="0" name="Variable">MasterGear</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="957350557387749">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="139832045726517" type="System">
+                                    <param id="0" name="Variable">MasterSpeed</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">10</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="570473605074551" type="System">
+                                    <param id="0" name="Variable">MasterGear</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="880591349471422" title="Minimap">
+            <sub-events>
+                <event-block sid="210267941979161">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="294771560697751" type="System" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="5" name="Add obstacle" sid="435219101244487" type="MinimapIcon">
+                            <param id="0" name="Obstacle">Minimap</param>
+                        </action>
+                        <action behavior="Pathfinding" id="5" name="Add obstacle" sid="563153359993204" type="MinimapIcon">
+                            <param id="0" name="Obstacle">Minimap2</param>
+                        </action>
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="992675478160322" type="MinimapIcon">
+                            <param id="0" name="X">Target.X</param>
+                            <param id="1" name="Y">Target.Y</param>
+                        </action>
+                        <action behavior="Pathfinding" id="8" name="Set acceleration" sid="455846572203615" type="MinimapIcon">
+                            <param id="0" name="Acceleration">0</param>
+                        </action>
+                        <action behavior="Pathfinding" id="5" name="Add obstacle" sid="679987287955367" type="CarMinimapIcon">
+                            <param id="0" name="Obstacle">Minimap</param>
+                        </action>
+                        <action behavior="Pathfinding" id="5" name="Add obstacle" sid="836041517012359" type="CarMinimapIcon">
+                            <param id="0" name="Obstacle">Minimap2</param>
+                        </action>
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="889448884760126" type="CarMinimapIcon">
+                            <param id="0" name="X">Target.X</param>
+                            <param id="1" name="Y">Target.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="231377766987068">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="0" name="On path found" sid="441756141825307" type="MinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="1" name="Move along path" sid="244994724568062" type="MinimapIcon" />
+                    </actions>
+                </event-block>
+                <event-block sid="578996402862160">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="1" name="On failed to find path" sid="987988675112886" type="MinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="494060969376108" type="Target">
+                            <param id="0" name="Text">&quot;FAILURE&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="304997797380581">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="5" name="On arrived" sid="325081511950203" type="MinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="797594153559139" type="Target">
+                            <param id="0" name="Text">&quot;u win&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="518621660306540">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="0" name="On path found" sid="431100154305902" type="CarMinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="1" name="Move along path" sid="296958812237509" type="CarMinimapIcon" />
+                    </actions>
+                </event-block>
+                <event-block sid="614444386037904">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="1" name="On failed to find path" sid="773023168305125" type="CarMinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="346448318585223" type="Target">
+                            <param id="0" name="Text">&quot;CAR FAILURE&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="253114283497578">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="5" name="On arrived" sid="596744806391446" type="CarMinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="115868704212688" type="Target">
+                            <param id="0" name="Text">&quot;u lose car was faster&quot;</param>
                         </action>
                     </actions>
                 </event-block>
