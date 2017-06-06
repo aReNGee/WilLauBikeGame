@@ -10,8 +10,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout active="1" order="0">Layout 1</layout>
-        <event-sheet order="1">Event sheet 1</event-sheet>
+        <layout order="2">Intro</layout>
+        <layout order="0">Gameplay</layout>
+        <event-sheet active="1" order="1">GameplaySheet</event-sheet>
+        <event-sheet order="3">IntroSheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -33,7 +35,12 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/Brakes/" />
         <folder expanded="1" path="animation-folder/Minimap/" />
         <folder expanded="1" path="animation-folder/MinimapIcon/" />
-        <folder expanded="1" path="animation-folder/Minimap2/" />
+        <folder expanded="1" path="animation-folder/BikeObstacle/" />
         <folder expanded="1" path="animation-folder/CarMinimapIcon/" />
+        <folder expanded="1" path="animation-folder/Player/" />
+        <folder expanded="1" path="animation-folder/Road/" />
+        <folder expanded="1" path="animation-folder/DisplayCar/" />
+        <folder expanded="1" path="animation-folder/Hazard/" />
+        <folder expanded="1" path="animation-folder/IntersectionCar/" />
     </folders-expanded>
 </c2uistate>

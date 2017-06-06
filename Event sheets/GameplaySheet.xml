@@ -1,13 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
-    <name>Event sheet 1</name>
+    <name>GameplaySheet</name>
     <events>
+        <variable constant="0" name="CONST_DIST_2_ROAD_AGAIN" sid="973175833184291" static="0" type="number">12500</variable>
+        <variable constant="0" name="DistTravelled" sid="946113149017002" static="0" type="number">0</variable>
+        <variable constant="0" name="CONST_DIST_2_GRASS" sid="945713059846375" static="0" type="number">5500</variable>
+        <variable constant="0" name="COUNTER_Car_Pathfinding" sid="943312457925836" static="0" type="number">0</variable>
         <variable constant="0" name="CONST_BRAKE_VALUE" sid="586394711326855" static="0" type="number">0.2</variable>
         <variable constant="1" name="CONST_SPEED_DECAY" sid="120448176241342" static="0" type="number">0.025</variable>
+        <variable constant="0" name="CONST_BIKE_SPEED" sid="767279142467094" static="0" type="number">1.5</variable>
         <variable constant="0" name="MasterGear" sid="611249114279097" static="0" type="number">0</variable>
         <variable constant="0" name="MasterSpeed" sid="729323905835789" static="0" type="number">0</variable>
         <variable constant="0" name="LastTapped" sid="762370902112326" static="0" type="text"></variable>
+        <comment>Touch and keyboard commands for the moment</comment>
         <event-group description="" sid="920007584596481" title="Pedaling">
             <sub-events>
                 <event-block sid="284192822946393">
@@ -221,6 +227,7 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <comment>Three Gear System</comment>
         <event-group description="" sid="156994374092074" title="Adjusting Speed based on player input">
             <sub-events>
                 <event-block sid="445247859374628">
@@ -243,7 +250,7 @@
                             <param id="0" name="Text">MasterSpeed</param>
                         </action>
                         <action behavior="Pathfinding" id="14" name="Set speed" sid="939570182355127" type="MinimapIcon">
-                            <param id="0" name="Speed">MasterSpeed</param>
+                            <param id="0" name="Speed">MasterSpeed *CONST_BIKE_SPEED</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -251,7 +258,7 @@
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="132449826516629" type="System">
                                     <param id="0" name="Variable">MasterSpeed</param>
-                                    <param id="1" name="Comparison">2</param>
+                                    <param id="1" name="Comparison">3</param>
                                     <param id="2" name="Value">0</param>
                                 </condition>
                             </conditions>
@@ -322,7 +329,7 @@
                             <param id="0" name="Obstacle">Minimap</param>
                         </action>
                         <action behavior="Pathfinding" id="5" name="Add obstacle" sid="563153359993204" type="MinimapIcon">
-                            <param id="0" name="Obstacle">Minimap2</param>
+                            <param id="0" name="Obstacle">BikeObstacle</param>
                         </action>
                         <action behavior="Pathfinding" id="0" name="Find path" sid="992675478160322" type="MinimapIcon">
                             <param id="0" name="X">Target.X</param>
@@ -331,15 +338,49 @@
                         <action behavior="Pathfinding" id="8" name="Set acceleration" sid="455846572203615" type="MinimapIcon">
                             <param id="0" name="Acceleration">0</param>
                         </action>
-                        <action behavior="Pathfinding" id="5" name="Add obstacle" sid="679987287955367" type="CarMinimapIcon">
-                            <param id="0" name="Obstacle">Minimap</param>
+                        <action id="3" name="Set at XY" sid="631076516487974" type="FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">1503</param>
                         </action>
-                        <action behavior="Pathfinding" id="5" name="Add obstacle" sid="836041517012359" type="CarMinimapIcon">
-                            <param id="0" name="Obstacle">Minimap2</param>
+                        <action id="3" name="Set at XY" sid="876673474943078" type="FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">238</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="154392662378692" type="FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">240</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="927325585988362" type="FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">1582</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="349051877291883" type="FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">1596</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="831079508891919" type="FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">52</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="821409401209242" type="FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">1866</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="275396369822331" type="FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">52</param>
                         </action>
                         <action behavior="Pathfinding" id="0" name="Find path" sid="889448884760126" type="CarMinimapIcon">
-                            <param id="0" name="X">Target.X</param>
-                            <param id="1" name="Y">Target.Y</param>
+                            <param id="0" name="X">FakingPathfindingButNotDynamically.At(COUNTER_Car_Pathfinding,0)</param>
+                            <param id="1" name="Y">FakingPathfindingButNotDynamically.At(COUNTER_Car_Pathfinding,1)</param>
                         </action>
                     </actions>
                 </event-block>
@@ -384,7 +425,7 @@
                         <condition behavior="Pathfinding" id="1" name="On failed to find path" sid="773023168305125" type="CarMinimapIcon" />
                     </conditions>
                     <actions>
-                        <action id="0" name="Set text" sid="346448318585223" type="Target">
+                        <action disabled="1" id="0" name="Set text" sid="346448318585223" type="Target">
                             <param id="0" name="Text">&quot;CAR FAILURE&quot;</param>
                         </action>
                     </actions>
@@ -394,11 +435,269 @@
                         <condition behavior="Pathfinding" id="5" name="On arrived" sid="596744806391446" type="CarMinimapIcon" />
                     </conditions>
                     <actions>
-                        <action id="0" name="Set text" sid="115868704212688" type="Target">
-                            <param id="0" name="Text">&quot;u lose car was faster&quot;</param>
+                        <action id="-10" name="Add to" sid="438121085582976" type="System">
+                            <param id="0" name="Variable">COUNTER_Car_Pathfinding</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="583123959132480">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="781899990376151" type="System">
+                                    <param id="0" name="Variable">COUNTER_Car_Pathfinding</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="115868704212688" type="Target">
+                                    <param id="0" name="Text">&quot;u lose car was faster&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="458497612552589">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="599318906778191" type="System" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Pathfinding" id="0" name="Find path" sid="347473293707589" type="CarMinimapIcon">
+                                    <param id="0" name="X">FakingPathfindingButNotDynamically.At(COUNTER_Car_Pathfinding,0)</param>
+                                    <param id="1" name="Y">FakingPathfindingButNotDynamically.At(COUNTER_Car_Pathfinding,1)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="579477046373183" title="ScrollingRoad">
+            <sub-events>
+                <event-block sid="903757875785867">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="374085702837940" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" sid="648234563401166" type="Road">
+                            <param id="0" name="Angle">90</param>
+                            <param id="1" name="Distance">MasterSpeed</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="906733006025676" type="System">
+                            <param id="0" name="Variable">DistTravelled</param>
+                            <param id="1" name="Value">MasterSpeed</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="593451932294513">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="581533327778406" type="System">
+                                    <param id="0" name="Object">Road</param>
+                                </condition>
+                                <condition id="-2" name="Compare Y" sid="604847388569401" type="Road">
+                                    <param id="0" name="Comparison">5</param>
+                                    <param id="1" name="Y co-ordinate">LayoutHeight + (0.5 * Road.Height) + 8</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="565126431821053" type="Road">
+                                    <param id="0" name="Y">16-Road.Height</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="558668103335896">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="541536620095448" type="System">
+                                            <param id="0" name="Variable">DistTravelled</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">CONST_DIST_2_GRASS</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="475051683685185" type="System">
+                                            <param id="0" name="Variable">CONST_BIKE_SPEED</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">CONST_DIST_2_ROAD_AGAIN</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="228381666130298" type="Road">
+                                            <param id="0" name="Animation">&quot;Grass&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="794512511155302">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="620967431962859" type="System">
+                                            <param id="0" name="Variable">DistTravelled</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">CONST_DIST_2_ROAD_AGAIN</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="395401152675484" type="Road">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="Not the one you&apos;re racing against" sid="283749107816161" title="ScrollingCar">
+            <sub-events>
+                <event-block sid="302924758475549">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="388075016323718" type="DisplayCar">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Y co-ordinate">1600</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="202702750194496" type="DisplayCar">
+                            <param id="0" name="Y">-200 - DisplayCar.Height</param>
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="774155041570572">
+                    <conditions>
+                        <condition id="-2" name="Compare Y" sid="719112514772677" type="DisplayCar">
+                            <param id="0" name="Comparison">2</param>
+                            <param id="1" name="Y co-ordinate">-200 - DisplayCar.Height</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="306549835650501" type="DisplayCar">
+                            <param id="0" name="Y">1600</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="583310284911348">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="418051137981076" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" sid="152259576918102" type="DisplayCar">
+                            <param id="0" name="Angle">-90</param>
+                            <param id="1" name="Distance">25- (MasterSpeed * 2)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="212950686350822" title="Hazards">
+            <sub-events>
+                <event-group description="" sid="189551660601596" title="Intersection">
+                    <sub-events>
+                        <event-block sid="260497035909746">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="292307078919352" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-23" name="Move at angle" sid="797677206552048" type="IntersectionCar">
+                                    <param id="0" name="Angle">90</param>
+                                    <param id="1" name="Distance">MasterSpeed</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="672815636137018">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="962297470187080" type="IntersectionCar">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">2600</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="833465285838574" type="IntersectionCar">
+                                    <param id="0" name="Y">-1400</param>
+                                </action>
+                                <action behavior="CustomMovement" id="0" name="Stop" sid="625640568466323" type="IntersectionCar" />
+                                <action id="-1" name="Set X" sid="337688309917463" type="IntersectionCar">
+                                    <param id="0" name="X">1168</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="848967731592195">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="462626631265018" type="IntersectionCar">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">350</param>
+                                </condition>
+                                <condition behavior="CustomMovement" id="1" name="Compare speed" sid="262959438338797" type="IntersectionCar">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Speed">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="730494558183494" type="IntersectionCar">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">-300</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="438975796896882">
+                            <conditions>
+                                <condition id="0" name="On collision with another object" sid="719140482367053" type="IntersectionCar">
+                                    <param id="0" name="Object">Player</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="355185016461371" type="Player">
+                                    <param id="0" name="Animation">&quot;Ded&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="863539639945675" title="Pothole">
+                    <sub-events>
+                        <event-block sid="834773798356566">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="142921729864194" type="Hazard">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">2000</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="307146796140250" type="Hazard">
+                                    <param id="0" name="Y">-1000</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="668780160501175">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="495882505449154" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-23" name="Move at angle" sid="589531857839442" type="Hazard">
+                                    <param id="0" name="Angle">90</param>
+                                    <param id="1" name="Distance">MasterSpeed</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>The player will fall over</comment>
+                        <event-block sid="182542892086996">
+                            <conditions>
+                                <condition id="0" name="On collision with another object" sid="541584048675262" type="Hazard">
+                                    <param id="0" name="Object">Player</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="888324062070663" type="System">
+                                    <param id="0" name="Variable">MasterGear</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="514646586011854" type="Player">
+                                    <param id="0" name="Animation">&quot;Ded&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
             </sub-events>
         </event-group>
     </events>
