@@ -19,8 +19,9 @@
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="Scirra" id="Car" version="1">Car</behavior>
         <behavior author="Scirra" id="Pathfinding" version="1">Pathfinding</behavior>
-        <behavior author="Scirra" id="custom" version="1">Custom Movement</behavior>
+        <behavior author="Scirra" id="Rotate" version="1">Rotate</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
     <used-effects />
@@ -289,14 +290,20 @@
         </object-type>
         <object-type name="IntersectionCar" sid="995767030355960">
             <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Activated" sid="240079034123897" type="number" />
+            </instance-variables>
             <behaviors>
-                <behavior-type name="CustomMovement" sid="447965832911898">
-                    <behavior id="custom" />
+                <behavior-type name="Car" sid="141784690296229">
+                    <behavior id="Car" />
+                </behavior-type>
+                <behavior-type name="Rotate" sid="406925970293012">
+                    <behavior id="Rotate" />
                 </behavior-type>
             </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="953770816141799" speed="5">
-                    <frame duration="1" hotspotX="0.502618" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\OrangeCar.png">
+                    <frame duration="1" hotspotX="0.502976" hotspotY="0.502618" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\OrangeCar.png">
                         <collision-poly>
                             <point x="0.0625" y="0.890052" />
                             <point x="0" y="0.502618" />
@@ -306,6 +313,32 @@
                             <point x="1" y="0.502618" />
                             <point x="0.9375" y="0.890052" />
                             <point x="0.5" y="0.921466" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="2" loop="1" name="Signal" pingpong="0" repeatcount="1" repeatto="0" sid="822538198990916" speed="3">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.502618" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\OrangeCar.png">
+                        <collision-poly>
+                            <point x="0.0625" y="0.109948" />
+                            <point x="0.5" y="0.078534" />
+                            <point x="0.9375" y="0.109948" />
+                            <point x="1" y="0.497382" />
+                            <point x="0.9375" y="0.890052" />
+                            <point x="0.5" y="0.910995" />
+                            <point x="0.0654762" y="0.884817" />
+                            <point x="0" y="0.497382" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.502618">
+                        <collision-poly>
+                            <point x="0.0625" y="0.109948" />
+                            <point x="0.5" y="0.078534" />
+                            <point x="0.9375" y="0.109948" />
+                            <point x="1" y="0.497382" />
+                            <point x="0.9375" y="0.890052" />
+                            <point x="0.5" y="0.910995" />
+                            <point x="0.0654762" y="0.884817" />
+                            <point x="0" y="0.497382" />
                         </collision-poly>
                     </frame>
                 </animation>

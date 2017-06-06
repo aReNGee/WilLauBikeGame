@@ -587,11 +587,16 @@
         </event-group>
         <event-group description="" sid="212950686350822" title="Hazards">
             <sub-events>
-                <event-group description="" sid="189551660601596" title="Intersection">
+                <event-group description="" sid="189551660601596" title="Intersection (Orange Car)">
                     <sub-events>
                         <event-block sid="260497035909746">
                             <conditions>
                                 <condition id="-1" name="Every tick" sid="292307078919352" type="System" />
+                                <condition id="-8" name="Compare two values" sid="167759872139426" type="System">
+                                    <param id="0" name="First value">IntersectionCar.Angle</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">270</param>
+                                </condition>
                             </conditions>
                             <actions>
                                 <action id="-23" name="Move at angle" sid="797677206552048" type="IntersectionCar">
@@ -600,22 +605,65 @@
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="672815636137018">
+                        <event-block any="1" sid="672815636137018">
                             <conditions>
                                 <condition id="-2" name="Compare Y" sid="962297470187080" type="IntersectionCar">
                                     <param id="0" name="Comparison">4</param>
                                     <param id="1" name="Y co-ordinate">2600</param>
+                                </condition>
+                                <condition id="-2" name="Compare Y" sid="258169330692149" type="IntersectionCar">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="Y co-ordinate">-1400</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="-2" name="Set Y" sid="833465285838574" type="IntersectionCar">
                                     <param id="0" name="Y">-1400</param>
                                 </action>
-                                <action behavior="CustomMovement" id="0" name="Stop" sid="625640568466323" type="IntersectionCar" />
+                                <action behavior="Car" id="0" name="Stop" sid="625640568466323" type="IntersectionCar" />
                                 <action id="-1" name="Set X" sid="337688309917463" type="IntersectionCar">
                                     <param id="0" name="X">1168</param>
                                 </action>
+                                <action id="-8" name="Set angle" sid="166859054369629" type="IntersectionCar">
+                                    <param id="0" name="Angle">180</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="773232346558715" type="IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Value">choose(0, 0, 0, -1)</param>
+                                </action>
                             </actions>
+                            <sub-events>
+                                <event-block sid="970940226723616">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="614126846047709" type="IntersectionCar">
+                                            <param id="0" name="Instance variable">Activated</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">-1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="576704564591627" type="IntersectionCar">
+                                            <param id="0" name="Animation">&quot;Signal&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="235883692684360">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="545734987622867" type="IntersectionCar">
+                                            <param id="0" name="Instance variable">Activated</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="161003713128625" type="IntersectionCar">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                         <event-block sid="848967731592195">
                             <conditions>
@@ -623,16 +671,74 @@
                                     <param id="0" name="Comparison">4</param>
                                     <param id="1" name="Y co-ordinate">350</param>
                                 </condition>
-                                <condition behavior="CustomMovement" id="1" name="Compare speed" sid="262959438338797" type="IntersectionCar">
-                                    <param id="0" name="Which">0</param>
-                                    <param id="1" name="Comparison">2</param>
-                                    <param id="2" name="Speed">1</param>
+                                <condition id="-7" name="Compare instance variable" sid="590943366756754" type="IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">-1</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="730494558183494" type="IntersectionCar">
-                                    <param id="0" name="Which">0</param>
-                                    <param id="1" name="Speed">-300</param>
+                                <action behavior="Car" id="3" name="Set speed" sid="805564185714420" type="IntersectionCar">
+                                    <param id="0" name="Speed">180</param>
+                                </action>
+                                <action behavior="Rotate" id="0" name="Set speed" sid="415479717151007" type="IntersectionCar">
+                                    <param id="0" name="Speed">30</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="934688899553529" type="IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="352344713928093" type="IntersectionCar">
+                                    <param id="0" name="Animation">&quot;Signal&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="271284474881581">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="748856874316215" type="IntersectionCar">
+                                    <param id="0" name="Comparison">5</param>
+                                    <param id="1" name="Y co-ordinate">350</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="526951989889545" type="IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Car" id="3" name="Set speed" sid="217903710679280" type="IntersectionCar">
+                                    <param id="0" name="Speed">180</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="559220001754157" type="IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="511744011347300">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="876098181436302" type="System">
+                                    <param id="0" name="First value">IntersectionCar.Angle</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Second value">270</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="455551172801568" type="IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Rotate" id="0" name="Set speed" sid="864292011725593" type="IntersectionCar">
+                                    <param id="0" name="Speed">0</param>
+                                </action>
+                                <action behavior="Car" id="3" name="Set speed" sid="216634993433925" type="IntersectionCar">
+                                    <param id="0" name="Speed">760</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="656049720501454" type="IntersectionCar">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
                                 </action>
                             </actions>
                         </event-block>
