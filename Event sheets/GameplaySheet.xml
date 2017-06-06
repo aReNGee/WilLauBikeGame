@@ -13,6 +13,9 @@
         <variable constant="0" name="MasterGear" sid="611249114279097" static="0" type="number">0</variable>
         <variable constant="0" name="MasterSpeed" sid="729323905835789" static="0" type="number">0</variable>
         <variable constant="0" name="LastTapped" sid="762370902112326" static="0" type="text"></variable>
+        <variable constant="0" name="DoWeTurn" sid="234582116940568" static="0" type="number">0</variable>
+        <variable constant="0" name="TurnOrNo" sid="738066493727438" static="0" type="number">0</variable>
+        <variable constant="0" name="TurnHere" sid="560595666102688" static="0" type="number">0</variable>
         <comment>Touch and keyboard commands for the moment</comment>
         <event-group description="" sid="920007584596481" title="Pedaling">
             <sub-events>
@@ -546,6 +549,41 @@
         </event-group>
         <event-group description="Not the one you&apos;re racing against" sid="283749107816161" title="ScrollingCar">
             <sub-events>
+                <event-group description="" sid="308033521947030" title="R-r-reset">
+                    <sub-events>
+                        <event-block sid="627859882612589">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="163310072644824" type="DisplayCar">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="X co-ordinate">2100</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="518213403691183" type="System">
+                                    <param id="0" name="Variable">TurnOrNo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="217284302125351" type="System">
+                                    <param id="0" name="Variable">DoWeTurn</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="882496449194475" type="DisplayCar">
+                                    <param id="0" name="Y">-200 - DisplayCar.Height</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="579779957981984" type="DisplayCar">
+                                    <param id="0" name="Angle">DisplayCar.Angle-DisplayCar.Angle</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="160658563748144" type="DisplayCar">
+                                    <param id="0" name="X">504</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="537717670387416" type="DisplayCar">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
                 <event-block sid="302924758475549">
                     <conditions>
                         <condition id="-2" name="Compare Y" sid="388075016323718" type="DisplayCar">
@@ -556,6 +594,17 @@
                     <actions>
                         <action id="-2" name="Set Y" sid="202702750194496" type="DisplayCar">
                             <param id="0" name="Y">-200 - DisplayCar.Height</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="496689744597519" type="DisplayCar">
+                            <param id="0" name="X">504</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="256962044984416" type="System">
+                            <param id="0" name="Variable">TurnOrNo</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="805614750862518" type="System">
+                            <param id="0" name="Variable">DoWeTurn</param>
+                            <param id="1" name="Value">0</param>
                         </action>
                     </actions>
                 </event-block>
@@ -570,16 +619,165 @@
                         <action id="-2" name="Set Y" sid="306549835650501" type="DisplayCar">
                             <param id="0" name="Y">1600</param>
                         </action>
+                        <action id="-9" name="Set value" sid="452807742836659" type="System">
+                            <param id="0" name="Variable">TurnOrNo</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="872050832045669" type="System">
+                            <param id="0" name="Variable">DoWeTurn</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="464711218070553" type="DisplayCar">
+                            <param id="0" name="X">504</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="583310284911348">
                     <conditions>
                         <condition id="-1" name="Every tick" sid="418051137981076" type="System" />
+                        <condition disabled="1" id="-14" name="Compare variable" sid="737665953209148" type="System">
+                            <param id="0" name="Variable">DoWeTurn</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
                     </conditions>
                     <actions>
                         <action id="-23" name="Move at angle" sid="152259576918102" type="DisplayCar">
                             <param id="0" name="Angle">-90</param>
-                            <param id="1" name="Distance">25- (MasterSpeed * 2)</param>
+                            <param id="1" name="Distance">25 - (MasterSpeed * 2) - DoWeTurn</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="677110573955645" type="DisplayCar">
+                            <param id="0" name="Angle">DisplayCar.Angle</param>
+                            <param id="1" name="Distance">DoWeTurn</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="871607725976362">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="789266683052581" type="System" />
+                        <condition id="-14" name="Compare variable" sid="736502589856321" type="System">
+                            <param id="0" name="Variable">DoWeTurn</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" sid="332573931006205" type="DisplayCar">
+                            <param id="0" name="Angle">-90</param>
+                            <param id="1" name="Distance">-MasterSpeed</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="117273013442130" type="DisplayCar">
+                            <param id="0" name="Angle">DisplayCar.Angle - 90</param>
+                            <param id="1" name="Distance">DoWeTurn</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="554602364997318">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="289763268290335" type="System">
+                            <param id="0" name="First value">TurnHere</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">DisplayCar.Y</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="615949512765302" type="System">
+                            <param id="0" name="Variable">TurnOrNo</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="209284763317753" type="DisplayCar">
+                            <param id="0" name="Animation">&quot;Blinky&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="734963199166932" type="System">
+                            <param id="0" name="Variable">DoWeTurn</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="844005155933366" type="System">
+                            <param id="0" name="Variable">CONST_SHRINKY</param>
+                            <param id="1" name="Value">23095230</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="571574455616404">
+                    <conditions>
+                        <condition id="-21" name="Is between values" sid="967110073202763" type="System">
+                            <param id="0" name="Value">DisplayCar.Y</param>
+                            <param id="1" name="Lower bound">1500</param>
+                            <param id="2" name="Upper bound">1600</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="479711352332487" type="System">
+                            <param id="0" name="Variable">TurnOrNo</param>
+                            <param id="1" name="Value">choose(1,1)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="378696826089929">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="432789945856246" type="System">
+                                    <param id="0" name="Variable">TurnOrNo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="589683828325383" type="DisplayCar">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="576374562862298">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="211947199810482" type="System">
+                                    <param id="0" name="Variable">TurnOrNo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="332085649369885" type="DisplayCar">
+                                    <param id="0" name="Animation">&quot;Blinky&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="680887614286647" type="System">
+                                    <param id="0" name="Variable">TurnHere</param>
+                                    <param id="1" name="Value">random(600) + 400</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="138149479104162">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="590837709648350" type="DisplayCar">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="X co-ordinate">826</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="993335579894467" type="System">
+                            <param id="0" name="Variable">TurnOrNo</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="902981154505138" type="System">
+                            <param id="0" name="Variable">DoWeTurn</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="809220983088238">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="851422684050279" type="DisplayCar">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="447035096635285" type="Player">
+                            <param id="0" name="Animation">&quot;Ded&quot;</param>
+                            <param id="1" name="From">1</param>
                         </action>
                     </actions>
                 </event-block>
