@@ -1154,5 +1154,57 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-group description="" sid="777882673009728" title="End Screen">
+            <sub-events>
+                <event-block sid="807145071505726">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="209460171646804" type="Touch">
+                            <param id="0" name="Object">Retry</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="473424949061287" type="Retry">
+                            <param id="0" name="Animation">&quot;Clicked&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="790630431598977">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="320839338328255" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="192394773922389" type="Retry">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="744272032779049">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="663017152893703" type="Touch">
+                            <param id="0" name="Object">Exit</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="950414918899543" type="Exit">
+                            <param id="0" name="Animation">&quot;Clicked&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="654017334996054">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="215499375591989" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="747703737579050" type="Exit">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>

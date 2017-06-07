@@ -10,9 +10,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout active="1" order="0">Gameplay</layout>
+        <layout order="0">Gameplay</layout>
         <layout order="2">Intro</layout>
-        <event-sheet order="1">GameplaySheet</event-sheet>
+        <event-sheet active="1" order="1">GameplaySheet</event-sheet>
         <event-sheet order="3">IntroSheet</event-sheet>
     </open-tabs>
     <properties>
@@ -24,12 +24,18 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <families-expanded root="1" />
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />
+        <folder expanded="1" path="object-folder/WinGame/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />
         <folder expanded="1" path="file-folder/" />
         <folder expanded="1" path="sound-folder/" />
         <folder expanded="1" path="music-folder/" />
         <folder expanded="0" path="file-folder/Icons/" />
+        <folder expanded="1" path="animation-folder/WinBackground2/" />
+        <folder expanded="1" path="animation-folder/Sprite/" />
+        <folder expanded="1" path="animation-folder/Retry/" />
+        <folder expanded="1" path="animation-folder/Exit/" />
+        <folder expanded="1" path="animation-folder/Star/" />
         <folder expanded="1" path="animation-folder/LeftPedal/" />
         <folder expanded="1" path="animation-folder/RightPedal/" />
         <folder expanded="1" path="animation-folder/Brakes/" />
