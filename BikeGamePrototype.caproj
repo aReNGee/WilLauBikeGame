@@ -16,7 +16,9 @@
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Spritefont2" version="1">Sprite font</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Scirra" id="progressbar" version="1">Progress bar</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Car" version="1">Car</behavior>
@@ -254,11 +256,14 @@
         <object-type name="Road" sid="303341840460368">
             <plugin id="Sprite" />
             <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="218321817713323" speed="5">
+                <animation framecount="1" loop="0" name="Road" pingpong="0" repeatcount="1" repeatto="0" sid="218321817713323" speed="5">
                     <frame duration="1" hotspotX="0.500754" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Road.png" />
                 </animation>
                 <animation framecount="1" loop="0" name="Grass" pingpong="0" repeatcount="1" repeatto="0" sid="201240052409363" speed="5">
                     <frame duration="1" hotspotX="0.500754" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\grass.png" />
+                </animation>
+                <animation framecount="1" loop="0" name="BikeLane" pingpong="0" repeatcount="1" repeatto="0" sid="573859862240281" speed="5">
+                    <frame duration="1" hotspotX="0.500754" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -376,6 +381,32 @@
                             <point x="0" y="0.497382" />
                         </collision-poly>
                     </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="RoadMap" sid="649748817511214">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="Timer" sid="850638894637158">
+            <plugin id="progressbar" />
+        </object-type>
+        <object-type name="TimerImage" sid="267291763123085">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="525188867196784" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\timer bar.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="NewTimer" sid="154438006556931">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="TimerIcon" sid="230972773870264">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="151139402706138" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\timer icon.png" />
                 </animation>
             </animation-folder>
         </object-type>

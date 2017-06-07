@@ -10,9 +10,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="0">Gameplay</layout>
+        <layout active="1" order="0">Gameplay</layout>
         <layout order="2">Intro</layout>
-        <event-sheet active="1" order="1">GameplaySheet</event-sheet>
+        <event-sheet order="1">GameplaySheet</event-sheet>
         <event-sheet order="3">IntroSheet</event-sheet>
     </open-tabs>
     <properties>
@@ -42,5 +42,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/DisplayCar/" />
         <folder expanded="1" path="animation-folder/Hazard/" />
         <folder expanded="1" path="animation-folder/IntersectionCar/" />
+        <folder expanded="1" path="animation-folder/TimerImage/" />
+        <folder expanded="1" path="animation-folder/TimerIcon/" />
     </folders-expanded>
 </c2uistate>
