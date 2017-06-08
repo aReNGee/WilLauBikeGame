@@ -2,7 +2,7 @@
 <c2project>
     <name>BikeGamePrototype</name>
     <description>A mistake</description>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
     <author></author>
     <author-email></author-email>
     <author-website>http://</author-website>
@@ -37,16 +37,17 @@
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
-    <use-loader-layout>0</use-loader-layout>
+    <first-layout>Tutorial</first-layout>
+    <use-loader-layout>1</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
         <prop name="Downscaling">Medium quality</prop>
         <prop name="Enable WebGL">On</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Fullscreen scaling">High quality</prop>
-        <prop name="Loader style">Construct 2 splash</prop>
+        <prop name="Loader style">Percentage text</prop>
         <prop name="Orientations">Any</prop>
-        <prop name="Pause on unfocus">No</prop>
+        <prop name="Pause on unfocus">Yes</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
         <prop name="Preload sounds">Yes</prop>
         <prop name="Preview browser">(default)</prop>
@@ -598,15 +599,30 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="ScoreText" sid="613128485224307">
+            <plugin id="Text" />
+        </object-type>
     </object-folder>
-    <families />
+    <families>
+        <family name="EndScreen" plugin-id="Sprite" sid="791596004154438">
+            <members>
+                <member>Exit</member>
+                <member>Retry</member>
+                <member>Sprite</member>
+                <member>Star</member>
+                <member>WinBackground2</member>
+            </members>
+        </family>
+    </families>
     <layout-folder>
         <layout>Gameplay.xml</layout>
         <layout>Intro.xml</layout>
+        <layout>Tutorial.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>GameplaySheet.xml</event-sheet>
         <event-sheet>IntroSheet.xml</event-sheet>
+        <event-sheet>Event sheet 1.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Touch" uid="2">
