@@ -1,0 +1,1461 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>M5_GameplaySheet</name>
+    <events>
+        <variable constant="1" name="M5_CONST_ACCEL" sid="856189683990178" static="0" type="number">2.5</variable>
+        <variable constant="1" name="M5_CONST_BRAKE_VALUE" sid="586394711326855" static="0" type="number">0.4</variable>
+        <variable constant="1" name="M5_CONST_BIKE_SPEED" sid="767279142467094" static="0" type="number">1.5</variable>
+        <variable constant="1" name="M5_CONST_SPEED_DECAY" sid="120448176241342" static="0" type="number">0.035</variable>
+        <variable constant="0" name="M5_DistTravelled" sid="946113149017002" static="0" type="number">0</variable>
+        <variable constant="0" name="M5_COUNTER_Car_Pathfinding" sid="943312457925836" static="0" type="number">0</variable>
+        <variable constant="0" name="M5_MasterGear" sid="611249114279097" static="0" type="number">0</variable>
+        <variable constant="0" name="M5_MasterSpeed" sid="729323905835789" static="0" type="number">0</variable>
+        <variable constant="0" name="M5_LastTapped" sid="762370902112326" static="0" type="text"></variable>
+        <variable constant="0" name="M5_DoWeTurn" sid="234582116940568" static="0" type="number">0</variable>
+        <variable constant="0" name="M5_TurnOrNo" sid="738066493727438" static="0" type="number">0</variable>
+        <variable constant="0" name="M5_TurnHere" sid="560595666102688" static="0" type="number">0</variable>
+        <comment>Touch and keyboard commands for the moment</comment>
+        <event-group description="" sid="920007584596481" title="Pedaling">
+            <sub-events>
+                <event-block sid="284192822946393">
+                    <conditions>
+                        <condition id="17" name="On tap object" sid="260976105421113" type="M5_Touch">
+                            <param id="0" name="Object">M5_LeftPedal</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="470615723947143" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;L&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="185023849598991" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Value">&quot;L&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="455544654682496" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="693447770464558">
+                    <conditions>
+                        <condition id="17" name="On tap object" sid="846530357523665" type="M5_Touch">
+                            <param id="0" name="Object">M5_RightPedal</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="567442476870547" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;R&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="499993731365218" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Value">&quot;R&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="662166248141527" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Left Arrow</comment>
+                <event-block sid="590281559447337">
+                    <conditions>
+                        <condition id="4" name="On key code pressed" sid="716642537097215" type="M5_Keyboard">
+                            <param id="0" name="Keycode">37</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="307737183602074" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;L&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="761927860082475" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Value">&quot;L&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="458368396597373" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Right Arrow</comment>
+                <event-block sid="341693328843180">
+                    <conditions>
+                        <condition id="4" name="On key code pressed" sid="536326424312822" type="M5_Keyboard">
+                            <param id="0" name="Keycode">39</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="141391258755720" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;R&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="364692709573647" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Value">&quot;R&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="697667713863645" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="648652201541465">
+                    <conditions>
+                        <condition id="0" name="On function" sid="592297007473988" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="578150718096707" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;L&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="187010263822420" type="M5_LeftPedal">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="854990629381059" type="M5_RightPedal">
+                            <param id="0" name="Animation">&quot;Animation2&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="169581334637270" type="System">
+                            <param id="0" name="Variable">M5_MasterSpeed</param>
+                            <param id="1" name="Value">M5_CONST_ACCEL</param>
+                        </action>
+                        <action id="0" name="Call function" sid="444464836027318" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;pedalAnimation&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="396005379646177">
+                    <conditions>
+                        <condition id="0" name="On function" sid="351046265481542" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Pedal&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="545296383696371" type="System">
+                            <param id="0" name="Variable">M5_LastTapped</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">&quot;R&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="325579247286886" type="M5_LeftPedal">
+                            <param id="0" name="Animation">&quot;Animation2&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="653833047849891" type="M5_RightPedal">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="280642529899095" type="System">
+                            <param id="0" name="Variable">M5_MasterSpeed</param>
+                            <param id="1" name="Value">M5_CONST_ACCEL</param>
+                        </action>
+                        <action id="0" name="Call function" sid="722211089952094" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;pedalAnimation&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="964728890375934">
+                    <conditions>
+                        <condition id="0" name="On function" sid="488146992104086" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Brake&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="288300265811997" type="System">
+                            <param id="0" name="Variable">M5_MasterSpeed</param>
+                            <param id="1" name="Value">M5_CONST_BRAKE_VALUE</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="771703764464427" type="M5_Brakes">
+                            <param id="0" name="Animation">&quot;Animation2&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="774403312204066">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="184388073288732" type="M5_Touch">
+                            <param id="0" name="Object">M5_Brakes</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="946884470530787" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Brake&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="399836280346697">
+                    <conditions>
+                        <condition id="5" name="Key code is down" sid="921669598102315" type="M5_Keyboard">
+                            <param id="0" name="Keycode">40</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="878641273256121" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;Brake&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="792059340372782">
+                    <conditions>
+                        <condition id="6" name="On key code released" sid="268693509029622" type="M5_Keyboard">
+                            <param id="0" name="Keycode">40</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="430065621558445" type="M5_Brakes">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="264454857527584">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="904065962576956" type="M5_Touch" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="909104678545554" type="M5_Brakes">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="735129732823710">
+                    <conditions>
+                        <condition id="0" name="On function" sid="162185695764589" type="M5_BikeMovement">
+                            <param id="0" name="Name">&quot;pedalAnimation&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="527928196360803">
+                            <conditions>
+                                <condition id="3" name="Compare frame" sid="792815927613461" type="M5_Player">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="Number">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="585209206935956" type="M5_Player">
+                                    <param id="0" name="Frame number">M5_Player.AnimationFrame+1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="317762392537680">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="971031546676504" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="493830834991060" type="M5_Player">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <comment>Three Gear System</comment>
+        <event-group description="" sid="156994374092074" title="Adjusting Speed based on player input">
+            <sub-events>
+                <event-block sid="445247859374628">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="731172246008735" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="263298245604358" type="System">
+                            <param id="0" name="Variable">M5_MasterSpeed</param>
+                            <param id="1" name="Value">M5_CONST_SPEED_DECAY * M5_MasterGear</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="815382027634111" type="System">
+                            <param id="0" name="Variable">M5_MasterSpeed</param>
+                            <param id="1" name="Value">clamp(M5_MasterSpeed,0,20)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="778508221855900" type="M5_DisplayGear">
+                            <param id="0" name="Text">M5_MasterGear</param>
+                        </action>
+                        <action id="0" name="Set text" sid="659217442714980" type="M5_DisplaySpeed">
+                            <param id="0" name="Text">M5_MasterSpeed</param>
+                        </action>
+                        <action behavior="Pathfinding" id="14" name="Set speed" sid="939570182355127" type="M5_MinimapIcon">
+                            <param id="0" name="Speed">M5_MasterSpeed *M5_CONST_BIKE_SPEED</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="475481229007476">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="132449826516629" type="System">
+                                    <param id="0" name="Variable">M5_MasterSpeed</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="552016294198915" type="System">
+                                    <param id="0" name="Variable">M5_MasterGear</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Low Gear</comment>
+                        <event-block sid="561053553854828">
+                            <conditions>
+                                <condition id="-21" name="Is between values" sid="298726808611918" type="System">
+                                    <param id="0" name="Value">M5_MasterSpeed</param>
+                                    <param id="1" name="Lower bound">0.01</param>
+                                    <param id="2" name="Upper bound">10</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="756287845488750" type="System">
+                                    <param id="0" name="Variable">M5_MasterGear</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>High Gear</comment>
+                        <event-block sid="690091085668443">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="538406700995063" type="System">
+                                    <param id="0" name="Variable">M5_MasterSpeed</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">10</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="276828429943385" type="System">
+                                    <param id="0" name="Variable">M5_MasterGear</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="880591349471422" title="Minimap">
+            <sub-events>
+                <event-block sid="210267941979161">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="294771560697751" type="System" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="5" name="Add obstacle" sid="435219101244487" type="M5_MinimapIcon">
+                            <param id="0" name="Obstacle">M5_Minimap</param>
+                        </action>
+                        <action behavior="Pathfinding" id="5" name="Add obstacle" sid="563153359993204" type="M5_MinimapIcon">
+                            <param id="0" name="Obstacle">M5_BikeObstacle</param>
+                        </action>
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="992675478160322" type="M5_MinimapIcon">
+                            <param id="0" name="X">M5_Target.X</param>
+                            <param id="1" name="Y">M5_Target.Y</param>
+                        </action>
+                        <action behavior="Pathfinding" id="8" name="Set acceleration" sid="455846572203615" type="M5_MinimapIcon">
+                            <param id="0" name="Acceleration">0</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="631076516487974" type="M5_FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">1503</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="876673474943078" type="M5_FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">238</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="154392662378692" type="M5_FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">240</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="927325585988362" type="M5_FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">1582</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="349051877291883" type="M5_FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">1596</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="831079508891919" type="M5_FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">52</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="821409401209242" type="M5_FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">1866</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="275396369822331" type="M5_FakingPathfindingButNotDynamically">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">52</param>
+                        </action>
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="889448884760126" type="M5_CarMinimapIcon">
+                            <param id="0" name="X">M5_FakingPathfindingButNotDynamically.At(M5_COUNTER_Car_Pathfinding,0)</param>
+                            <param id="1" name="Y">M5_FakingPathfindingButNotDynamically.At(M5_COUNTER_Car_Pathfinding,1)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="231377766987068">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="0" name="On path found" sid="441756141825307" type="M5_MinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="1" name="Move along path" sid="244994724568062" type="M5_MinimapIcon" />
+                    </actions>
+                </event-block>
+                <event-block sid="578996402862160">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="1" name="On failed to find path" sid="987988675112886" type="M5_MinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="494060969376108" type="M5_Target">
+                            <param id="0" name="Text">&quot;FAILURE&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="304997797380581">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="5" name="On arrived" sid="325081511950203" type="M5_MinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="797594153559139" type="M5_Target">
+                            <param id="0" name="Text">&quot;u win&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="518621660306540">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="0" name="On path found" sid="431100154305902" type="M5_CarMinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="1" name="Move along path" sid="296958812237509" type="M5_CarMinimapIcon" />
+                    </actions>
+                </event-block>
+                <event-block sid="614444386037904">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="1" name="On failed to find path" sid="773023168305125" type="M5_CarMinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="0" name="Set text" sid="346448318585223" type="M5_Target">
+                            <param id="0" name="Text">&quot;CAR FAILURE&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="253114283497578">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="5" name="On arrived" sid="596744806391446" type="M5_CarMinimapIcon" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="438121085582976" type="System">
+                            <param id="0" name="Variable">M5_COUNTER_Car_Pathfinding</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="583123959132480">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="781899990376151" type="System">
+                                    <param id="0" name="Variable">M5_COUNTER_Car_Pathfinding</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="115868704212688" type="M5_Target">
+                                    <param id="0" name="Text">&quot;u lose car was faster&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="458497612552589">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="599318906778191" type="System" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Pathfinding" id="0" name="Find path" sid="347473293707589" type="M5_CarMinimapIcon">
+                                    <param id="0" name="X">M5_FakingPathfindingButNotDynamically.At(M5_COUNTER_Car_Pathfinding,0)</param>
+                                    <param id="1" name="Y">M5_FakingPathfindingButNotDynamically.At(M5_COUNTER_Car_Pathfinding,1)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <variable constant="0" name="M5_CounterForRoad" sid="951060041168254" static="0" type="number">0</variable>
+        <variable constant="0" name="M5_WhereAreWeOnTheMap" sid="910921578419211" static="0" type="number">0</variable>
+        <event-group description="" sid="191143778771248" title="Generating the map">
+            <sub-events>
+                <comment>The first value is the type of road, the second value is the number of tiles in that section of road. Does not include hazard calls.</comment>
+                <event-block sid="546712574191325">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="371244314749459" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Set at XY" sid="662256678636037" type="M5_RoadMap">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">&quot;Grass&quot;</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="145211947675048" type="M5_RoadMap">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">20</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="444076855777162" type="M5_RoadMap">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">&quot;BikeLane&quot;</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="165817814848758" type="M5_RoadMap">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">30</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="651383224523268" type="M5_RoadMap">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">&quot;Road&quot;</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="299569737714403" type="M5_RoadMap">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">25</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="230105896447038" type="M5_RoadMap">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Value">&quot;BikeLane&quot;</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="479404456731843" type="M5_RoadMap">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">25</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="307970179633539" type="System">
+                            <param id="0" name="Variable">M5_CounterForRoad</param>
+                            <param id="1" name="Value">M5_RoadMap.At(M5_WhereAreWeOnTheMap,1)</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="612641405163586" type="M5_EndScreen">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="694351772555678" type="M5_ScoreText">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="579477046373183" title="ScrollingRoad">
+            <sub-events>
+                <event-block sid="903757875785867">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="374085702837940" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" sid="648234563401166" type="M5_Road">
+                            <param id="0" name="Angle">90</param>
+                            <param id="1" name="Distance">M5_MasterSpeed</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="906733006025676" type="System">
+                            <param id="0" name="Variable">M5_DistTravelled</param>
+                            <param id="1" name="Value">M5_MasterSpeed</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="593451932294513">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="581533327778406" type="System">
+                                    <param id="0" name="Object">M5_Road</param>
+                                </condition>
+                                <condition id="-2" name="Compare Y" sid="604847388569401" type="M5_Road">
+                                    <param id="0" name="Comparison">5</param>
+                                    <param id="1" name="Y co-ordinate">LayoutHeight + (0.5 * M5_Road.Height) + 8</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="565126431821053" type="M5_Road">
+                                    <param id="0" name="Y">16-M5_Road.Height</param>
+                                </action>
+                                <action id="-11" name="Subtract from" sid="122467889007883" type="System">
+                                    <param id="0" name="Variable">M5_CounterForRoad</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="771379483157977">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="857972658929560" type="System">
+                                            <param id="0" name="Variable">M5_CounterForRoad</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="377785291592497" type="System">
+                                            <param id="0" name="Variable">M5_WhereAreWeOnTheMap</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="781054117491419" type="System">
+                                            <param id="0" name="Variable">M5_CounterForRoad</param>
+                                            <param id="1" name="Value">M5_RoadMap.At(M5_WhereAreWeOnTheMap,1)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="268136323813646">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="575307401615489" type="System">
+                                            <param id="0" name="First value">M5_RoadMap.At(M5_WhereAreWeOnTheMap,0)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">&quot;Grass&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="730445380046625" type="M5_Road">
+                                            <param id="0" name="Animation">&quot;Grass&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="840518083905209">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="429113644819367" type="System">
+                                            <param id="0" name="First value">M5_RoadMap.At(M5_WhereAreWeOnTheMap,0)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">&quot;Road&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="572118745811035" type="M5_Road">
+                                            <param id="0" name="Animation">&quot;Road&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="688859662344634">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="809835292004011" type="System">
+                                            <param id="0" name="First value">M5_RoadMap.At(M5_WhereAreWeOnTheMap,0)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">&quot;BikeLane&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="950822248178582" type="M5_Road">
+                                            <param id="0" name="Animation">&quot;BikeLane&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="Not the one you&apos;re racing against" sid="283749107816161" title="ScrollingCar">
+            <sub-events>
+                <variable constant="0" name="M5_Local_BlueCarX" sid="728595582011556" static="0" type="number">425</variable>
+                <event-group description="" sid="308033521947030" title="R-r-reset">
+                    <sub-events>
+                        <event-block sid="627859882612589">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="163310072644824" type="M5_DisplayCar">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="X co-ordinate">2100</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="518213403691183" type="System">
+                                    <param id="0" name="Variable">M5_TurnOrNo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="217284302125351" type="System">
+                                    <param id="0" name="Variable">M5_DoWeTurn</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="882496449194475" type="M5_DisplayCar">
+                                    <param id="0" name="Y">-200 - M5_DisplayCar.Height</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="579779957981984" type="M5_DisplayCar">
+                                    <param id="0" name="Angle">M5_DisplayCar.Angle-M5_DisplayCar.Angle</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="160658563748144" type="M5_DisplayCar">
+                                    <param id="0" name="X">M5_Local_BlueCarX</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="537717670387416" type="M5_DisplayCar">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="814253895941077" title="Move car from bottom to top or top to bottom (if not on grass)" />
+                <event-block sid="451102498102331">
+                    <conditions>
+                        <condition id="2" name="Is playing" sid="960266543963929" type="M5_Road">
+                            <param id="0" name="Animation">&quot;Grass&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                </event-block>
+                <event-block sid="111000781672809">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="498377591853773" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="302924758475549">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="388075016323718" type="M5_DisplayCar">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">1600</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="202702750194496" type="M5_DisplayCar">
+                                    <param id="0" name="Y">-200 - M5_DisplayCar.Height</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="631709350784561" type="M5_DisplayCar">
+                                    <param id="0" name="X">M5_Local_BlueCarX</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="256962044984416" type="System">
+                                    <param id="0" name="Variable">M5_TurnOrNo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="805614750862518" type="System">
+                                    <param id="0" name="Variable">M5_DoWeTurn</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="774155041570572">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="719112514772677" type="M5_DisplayCar">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="Y co-ordinate">-200 - M5_DisplayCar.Height</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="306549835650501" type="M5_DisplayCar">
+                                    <param id="0" name="Y">1600</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="452807742836659" type="System">
+                                    <param id="0" name="Variable">M5_TurnOrNo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="872050832045669" type="System">
+                                    <param id="0" name="Variable">M5_DoWeTurn</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="630414192621827" type="M5_DisplayCar">
+                                    <param id="0" name="X">M5_Local_BlueCarX</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Testing making the car disappear during grass</comment>
+                <event-group description="I hate doing this" sid="999631807245671" title="stops the car from going on the grass">
+                    <sub-events>
+                        <variable constant="0" name="M5_IsCarOnGrass" sid="995136774833241" static="0" type="number">0</variable>
+                        <event-block sid="583310284911348">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="418051137981076" type="System" />
+                                <condition id="2" name="Is playing" sid="734491661245000" type="M5_Road">
+                                    <param id="0" name="Animation">&quot;Grass&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="636519608931043" type="System">
+                                    <param id="0" name="Variable">M5_IsCarOnGrass</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="928834972149374">
+                                    <conditions>
+                                        <condition id="-11" name="For Each" sid="657308346972876" type="System">
+                                            <param id="0" name="Object">M5_Road</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="395502716389232">
+                                            <conditions>
+                                                <condition id="1" name="Is overlapping another object" sid="871223108900151" type="M5_Road">
+                                                    <param id="0" name="Object">M5_DisplayCar</param>
+                                                </condition>
+                                                <condition id="2" name="Is playing" sid="771864398531816" type="M5_Road">
+                                                    <param id="0" name="Animation">&quot;Grass&quot;</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-10" name="Add to" sid="581276095034187" type="System">
+                                                    <param id="0" name="Variable">M5_IsCarOnGrass</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="726998012399854">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="185111198182982" type="System">
+                                            <param id="0" name="Variable">M5_IsCarOnGrass</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-23" name="Move at angle" sid="152259576918102" type="M5_DisplayCar">
+                                            <param id="0" name="Angle">-90</param>
+                                            <param id="1" name="Distance">30 - (M5_MasterSpeed ) - (M5_DoWeTurn * 1.5)</param>
+                                        </action>
+                                        <action id="-23" name="Move at angle" sid="677110573955645" type="M5_DisplayCar">
+                                            <param id="0" name="Angle">M5_DisplayCar.Angle</param>
+                                            <param id="1" name="Distance">M5_DoWeTurn</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="859680779496422">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="825721317852178" type="System">
+                                            <param id="0" name="Variable">M5_IsCarOnGrass</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-23" name="Move at angle" sid="644802726917539" type="M5_DisplayCar">
+                                            <param id="0" name="Angle">-90</param>
+                                            <param id="1" name="Distance">- M5_MasterSpeed</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="655622783378443">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="397705060007108" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-23" name="Move at angle" sid="684778058708938" type="M5_DisplayCar">
+                                    <param id="0" name="Angle">-90</param>
+                                    <param id="1" name="Distance">30 - (M5_MasterSpeed ) - (M5_DoWeTurn * 1.5)</param>
+                                </action>
+                                <action id="-23" name="Move at angle" sid="213171493075515" type="M5_DisplayCar">
+                                    <param id="0" name="Angle">M5_DisplayCar.Angle</param>
+                                    <param id="1" name="Distance">M5_DoWeTurn</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-block disabled="1" sid="816798342487216">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="981197440328949" type="System" />
+                        <condition id="2" name="Is playing" sid="228179838777933" type="M5_Road">
+                            <param id="0" name="Animation">&quot;Grass&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="-2" name="Set Y" sid="936108469325549" type="M5_DisplayCar">
+                            <param id="0" name="Y">1400</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="871607725976362">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="789266683052581" type="System" />
+                        <condition id="-14" name="Compare variable" sid="736502589856321" type="System">
+                            <param id="0" name="Variable">M5_DoWeTurn</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" sid="332573931006205" type="M5_DisplayCar">
+                            <param id="0" name="Angle">-90</param>
+                            <param id="1" name="Distance">-M5_MasterSpeed</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="117273013442130" type="M5_DisplayCar">
+                            <param id="0" name="Angle">M5_DisplayCar.Angle - 90</param>
+                            <param id="1" name="Distance">M5_DoWeTurn</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="554602364997318">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="289763268290335" type="System">
+                            <param id="0" name="First value">M5_TurnHere</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">M5_DisplayCar.Y</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="615949512765302" type="System">
+                            <param id="0" name="Variable">M5_TurnOrNo</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="209284763317753" type="M5_DisplayCar">
+                            <param id="0" name="Animation">&quot;Blinky&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="734963199166932" type="System">
+                            <param id="0" name="Variable">M5_DoWeTurn</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Checks if the car is going to turn. Only displays if there is a regular road.</comment>
+                <event-block sid="571574455616404">
+                    <conditions>
+                        <condition id="-21" name="Is between values" sid="967110073202763" type="System">
+                            <param id="0" name="Value">M5_DisplayCar.Y</param>
+                            <param id="1" name="Lower bound">1500</param>
+                            <param id="2" name="Upper bound">1600</param>
+                        </condition>
+                        <condition id="2" name="Is playing" sid="658081842704504" type="M5_Road">
+                            <param id="0" name="Animation">&quot;Road&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="479711352332487" type="System">
+                            <param id="0" name="Variable">M5_TurnOrNo</param>
+                            <param id="1" name="Value">choose(0,0,1)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="378696826089929">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="432789945856246" type="System">
+                                    <param id="0" name="Variable">M5_TurnOrNo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="589683828325383" type="M5_DisplayCar">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="576374562862298">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="211947199810482" type="System">
+                                    <param id="0" name="Variable">M5_TurnOrNo</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="332085649369885" type="M5_DisplayCar">
+                                    <param id="0" name="Animation">&quot;Blinky&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="680887614286647" type="System">
+                                    <param id="0" name="Variable">M5_TurnHere</param>
+                                    <param id="1" name="Value">random(300) + 300</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="430670429017801">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="961312134782351" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="581178437655730" type="System">
+                            <param id="0" name="Variable">M5_TurnOrNo</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="138149479104162">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="590837709648350" type="M5_DisplayCar">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="X co-ordinate">826</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="993335579894467" type="System">
+                            <param id="0" name="Variable">M5_TurnOrNo</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="902981154505138" type="System">
+                            <param id="0" name="Variable">M5_DoWeTurn</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="909602754341822" type="M5_DisplayCar">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="809220983088238">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="851422684050279" type="M5_DisplayCar">
+                            <param id="0" name="Object">M5_Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="447035096635285" type="M5_Player">
+                            <param id="0" name="Animation">&quot;Ded&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="896811072538944" type="M5_NewTimer">
+                            <param id="0" name="Width">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="212950686350822" title="Hazards">
+            <sub-events>
+                <event-group description="" sid="189551660601596" title="Intersection (Orange Car)">
+                    <sub-events>
+                        <event-block sid="260497035909746">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="292307078919352" type="System" />
+                                <condition id="-8" name="Compare two values" sid="167759872139426" type="System">
+                                    <param id="0" name="First value">M5_IntersectionCar.Angle</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">270</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-23" name="Move at angle" sid="797677206552048" type="M5_IntersectionCar">
+                                    <param id="0" name="Angle">90</param>
+                                    <param id="1" name="Distance">M5_MasterSpeed</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Moves the intersection</comment>
+                        <event-block sid="769308806515311">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="829712324189899" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-23" name="Move at angle" sid="277777203941342" type="M5_Intersection">
+                                    <param id="0" name="Angle">90</param>
+                                    <param id="1" name="Distance">M5_MasterSpeed</param>
+                                </action>
+                                <action id="-23" name="Move at angle" sid="163228419166572" type="m5_r4Intersection">
+                                    <param id="0" name="Angle">90</param>
+                                    <param id="1" name="Distance">M5_MasterSpeed</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>resets the car</comment>
+                        <event-block any="1" sid="672815636137018">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="962297470187080" type="M5_IntersectionCar">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">2600</param>
+                                </condition>
+                                <condition id="-2" name="Compare Y" sid="258169330692149" type="M5_IntersectionCar">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="Y co-ordinate">-3200</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="833465285838574" type="M5_IntersectionCar">
+                                    <param id="0" name="Y">-3200</param>
+                                </action>
+                                <action behavior="Car" id="0" name="Stop" sid="625640568466323" type="M5_IntersectionCar" />
+                                <action id="-1" name="Set X" sid="337688309917463" type="M5_IntersectionCar">
+                                    <param id="0" name="X">1168</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="166859054369629" type="M5_IntersectionCar">
+                                    <param id="0" name="Angle">180</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="773232346558715" type="M5_IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Value">choose(0, 0, 0, -1)</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="621221976849295" type="M5_Intersection">
+                                    <param id="0" name="Y">M5_IntersectionCar.Y + 220</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="145639673439824" type="m5_r4Intersection">
+                                    <param id="0" name="Y">M5_IntersectionCar.Y + 211</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="970940226723616">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="614126846047709" type="M5_IntersectionCar">
+                                            <param id="0" name="Instance variable">Activated</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">-1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="576704564591627" type="M5_IntersectionCar">
+                                            <param id="0" name="Animation">&quot;Signal&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="235883692684360">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="545734987622867" type="M5_IntersectionCar">
+                                            <param id="0" name="Instance variable">Activated</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="161003713128625" type="M5_IntersectionCar">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="848967731592195">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="462626631265018" type="M5_IntersectionCar">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">350</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="590943366756754" type="M5_IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">-1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Car" id="3" name="Set speed" sid="805564185714420" type="M5_IntersectionCar">
+                                    <param id="0" name="Speed">180*3</param>
+                                </action>
+                                <action behavior="Rotate" id="0" name="Set speed" sid="415479717151007" type="M5_IntersectionCar">
+                                    <param id="0" name="Speed">30*3</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="934688899553529" type="M5_IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="352344713928093" type="M5_IntersectionCar">
+                                    <param id="0" name="Animation">&quot;Signal&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="271284474881581">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="748856874316215" type="M5_IntersectionCar">
+                                    <param id="0" name="Comparison">5</param>
+                                    <param id="1" name="Y co-ordinate">350</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="526951989889545" type="M5_IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Car" id="3" name="Set speed" sid="217903710679280" type="M5_IntersectionCar">
+                                    <param id="0" name="Speed">180*3</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="559220001754157" type="M5_IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="511744011347300">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="876098181436302" type="System">
+                                    <param id="0" name="First value">M5_IntersectionCar.Angle</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Second value">270</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="455551172801568" type="M5_IntersectionCar">
+                                    <param id="0" name="Instance variable">Activated</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Rotate" id="0" name="Set speed" sid="864292011725593" type="M5_IntersectionCar">
+                                    <param id="0" name="Speed">0</param>
+                                </action>
+                                <action behavior="Car" id="3" name="Set speed" sid="216634993433925" type="M5_IntersectionCar">
+                                    <param id="0" name="Speed">760</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="656049720501454" type="M5_IntersectionCar">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="438975796896882">
+                            <conditions>
+                                <condition id="0" name="On collision with another object" sid="719140482367053" type="M5_IntersectionCar">
+                                    <param id="0" name="Object">M5_Player</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="355185016461371" type="M5_Player">
+                                    <param id="0" name="Animation">&quot;Ded&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="253877415423419" type="M5_NewTimer">
+                                    <param id="0" name="Width">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="863539639945675" title="Pothole">
+                    <sub-events>
+                        <event-block sid="834773798356566">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="142921729864194" type="M5_Hazard">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">2000</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="307146796140250" type="M5_Hazard">
+                                    <param id="0" name="Y">-3000</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="668780160501175">
+                            <conditions>
+                                <condition id="-1" name="Every tick" sid="495882505449154" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-23" name="Move at angle" sid="589531857839442" type="M5_Hazard">
+                                    <param id="0" name="Angle">90</param>
+                                    <param id="1" name="Distance">M5_MasterSpeed</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>The player will fall over</comment>
+                        <event-block sid="182542892086996">
+                            <conditions>
+                                <condition id="0" name="On collision with another object" sid="541584048675262" type="M5_Hazard">
+                                    <param id="0" name="Object">M5_Player</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="888324062070663" type="System">
+                                    <param id="0" name="Variable">M5_MasterGear</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="514646586011854" type="M5_Player">
+                                    <param id="0" name="Animation">&quot;Ded&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="835164459663875" type="M5_NewTimer">
+                                    <param id="0" name="Width">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="464842326032948" title="Timer">
+            <sub-events>
+                <event-block sid="555214056143174">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="547512970907567" type="System">
+                            <param id="0" name="Interval (seconds)">0.05</param>
+                        </condition>
+                        <condition id="-5" name="Compare width" sid="546053752807698" type="M5_NewTimer">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Width">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="-5" name="Set width" sid="904429911047994" type="M5_NewTimer">
+                            <param id="0" name="Width">M5_NewTimer.Width - 3.2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-group description="" sid="145100403595581" title="Scoring">
+                    <sub-events>
+                        <variable constant="0" name="M5_StarsToShow" sid="311566991242170" static="0" type="number">0</variable>
+                        <event-block sid="297560449266079">
+                            <conditions>
+                                <condition id="-5" name="Compare width" sid="886359895046425" type="M5_NewTimer">
+                                    <param id="0" name="Comparison">3</param>
+                                    <param id="1" name="Width">0</param>
+                                </condition>
+                                <condition id="-4" name="Trigger once while true" sid="665837175247185" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="642948451129751" type="M5_EndScreen">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="686224788809840" type="M5_ScoreText">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="0" name="Set text" sid="723974694795823" type="M5_ScoreText">
+                                    <param id="0" name="Text">&quot;You travelled &quot; &amp; round(M5_DistTravelled) &amp; &quot;m.&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>One Star</comment>
+                                <event-block sid="790815222677140">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="118758238239763" type="System">
+                                            <param id="0" name="Variable">M5_DistTravelled</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">5000</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="782475225737353" type="System">
+                                            <param id="0" name="Variable">M5_StarsToShow</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Two Stars</comment>
+                                <event-block sid="615326992829105">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="751559135173637" type="System">
+                                            <param id="0" name="Variable">M5_DistTravelled</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">10000</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="372354377321357" type="System">
+                                            <param id="0" name="Variable">M5_StarsToShow</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Three Stars</comment>
+                                <event-block sid="824768760464511">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="725826762282596" type="System">
+                                            <param id="0" name="Variable">M5_DistTravelled</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">15000</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="116326174333129" type="System">
+                                            <param id="0" name="Variable">M5_StarsToShow</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="517393734889074">
+                                    <conditions>
+                                        <condition id="-11" name="For Each" sid="820244497626965" type="System">
+                                            <param id="0" name="Object">Star</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="285474639744886" type="System">
+                                            <param id="0" name="Variable">M5_StarsToShow</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="764912283326676" type="Star">
+                                            <param id="0" name="Animation">&quot;Full&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                        <action id="-11" name="Subtract from" sid="586032600700110" type="System">
+                                            <param id="0" name="Variable">M5_StarsToShow</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="777882673009728" title="End Screen">
+            <sub-events>
+                <event-block sid="807145071505726">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="209460171646804" type="M5_Touch">
+                            <param id="0" name="Object">Retry</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="473424949061287" type="Retry">
+                            <param id="0" name="Animation">&quot;Clicked&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="220012837951889" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="-21" name="Reset global variables" sid="831373810863474" type="System" />
+                        <action id="-26" name="Restart layout" sid="203735362016895" type="System" />
+                    </actions>
+                </event-block>
+                <event-block sid="790630431598977">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="320839338328255" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="192394773922389" type="Retry">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="744272032779049">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="663017152893703" type="M5_Touch">
+                            <param id="0" name="Object">Exit</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="950414918899543" type="Exit">
+                            <param id="0" name="Animation">&quot;Clicked&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="654017334996054">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="215499375591989" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="747703737579050" type="Exit">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

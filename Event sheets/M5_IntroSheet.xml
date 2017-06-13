@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>M5_IntroSheet</name>
+    <events>
+        <variable constant="0" name="M5_Multi" sid="614311540766442" static="0" type="number">0</variable>
+        <variable constant="1" name="M5_CONST_SHRINKY" sid="114741178331427" static="0" type="number">10</variable>
+        <variable constant="1" name="M5_CONST_SIZE_MULTIPLIER" sid="727608763668011" static="0" type="number">0.1</variable>
+        <event-block sid="561801344706395">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="632612713956059" type="System" />
+                <condition id="-5" name="Compare width" sid="231402369375527" type="M5_Player">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="Width">115 * 2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="448958394657558" type="System">
+                    <param id="0" name="Variable">M5_Multi</param>
+                    <param id="1" name="Value">M5_Multi * M5_CONST_SIZE_MULTIPLIER</param>
+                </action>
+                <action id="-6" name="Set height" sid="754897073550026" type="M5_Road">
+                    <param id="0" name="Height">M5_Road.Height + (M5_Road.Height * M5_CONST_SIZE_MULTIPLIER/3)</param>
+                </action>
+                <action id="9" name="Set scale" sid="260773834167266" type="M5_Minimap">
+                    <param id="0" name="Scale">M5_Multi</param>
+                </action>
+                <action id="9" name="Set scale" sid="812660837687090" type="M5_Player">
+                    <param id="0" name="Scale">M5_Multi/2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="868849559032686">
+            <conditions>
+                <condition id="-5" name="Compare width" sid="520249078992247" type="M5_Player">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Width">115 * 2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="665782785498867" type="System">
+                    <param id="0" name="Seconds">1</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="396485405047032" type="System">
+                    <param id="0" name="Layout">M5_Gameplay</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="962866707806799">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="931467029021480" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="638268356088341" type="System">
+                    <param id="0" name="Variable">M5_Multi</param>
+                    <param id="1" name="Value">0.1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

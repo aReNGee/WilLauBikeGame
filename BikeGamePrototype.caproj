@@ -18,7 +18,6 @@
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
-        <plugin author="Scirra" id="progressbar" version="1">Progress bar</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Car" version="1">Car</behavior>
@@ -37,7 +36,7 @@
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
-    <first-layout>Tutorial</first-layout>
+    <first-layout>M5_Tutorial</first-layout>
     <use-loader-layout>1</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -181,7 +180,7 @@
                 </animation-folder>
             </object-type>
         </object-folder>
-        <object-type name="LeftPedal" sid="260087925315706">
+        <object-type name="M5_LeftPedal" sid="260087925315706">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="462062964719932" speed="5">
@@ -203,7 +202,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="RightPedal" sid="290748886798890">
+        <object-type name="M5_RightPedal" sid="290748886798890">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="241340470448002" speed="5">
@@ -225,19 +224,19 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Touch" sid="546762472949608">
+        <object-type name="M5_Touch" sid="546762472949608">
             <plugin id="Touch" />
         </object-type>
-        <object-type name="BikeMovement" sid="939373773923239">
+        <object-type name="M5_BikeMovement" sid="939373773923239">
             <plugin id="Function" />
         </object-type>
-        <object-type name="Keyboard" sid="561158520938619">
+        <object-type name="M5_Keyboard" sid="561158520938619">
             <plugin id="Keyboard" />
         </object-type>
-        <object-type name="Text" sid="104356330151198">
+        <object-type name="M5_Text" sid="104356330151198">
             <plugin id="Text" />
         </object-type>
-        <object-type name="Brakes" sid="179738947739601">
+        <object-type name="M5_Brakes" sid="179738947739601">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="494125402235106" speed="5">
@@ -248,15 +247,15 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="DisplayGear" sid="374495753914296">
+        <object-type name="M5_DisplayGear" sid="374495753914296">
             <plugin id="Spritefont2" />
             <texture />
         </object-type>
-        <object-type name="DisplaySpeed" sid="273045644990939">
+        <object-type name="M5_DisplaySpeed" sid="273045644990939">
             <plugin id="Spritefont2" />
             <texture />
         </object-type>
-        <object-type name="Minimap" sid="904696062971438">
+        <object-type name="M5_Minimap" sid="904696062971438">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Solid" sid="249537242714580">
@@ -280,7 +279,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="MinimapIcon" sid="440548238533009">
+        <object-type name="M5_MinimapIcon" sid="440548238533009">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Pathfinding" sid="314849309974440">
@@ -304,10 +303,10 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Target" sid="157739822617206">
+        <object-type name="M5_Target" sid="157739822617206">
             <plugin id="Text" />
         </object-type>
-        <object-type name="BikeObstacle" sid="266869492514528">
+        <object-type name="M5_BikeObstacle" sid="266869492514528">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Solid" sid="950158119578848">
@@ -331,7 +330,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="CarMinimapIcon" sid="421525871343925">
+        <object-type name="M5_CarMinimapIcon" sid="421525871343925">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Pathfinding" sid="514025915233230">
@@ -355,14 +354,14 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type global="1" name="FakingPathfindingButNotDynamically" sid="530091201722648">
+        <object-type global="1" name="M5_FakingPathfindingButNotDynamically" sid="530091201722648">
             <plugin id="Arr" />
         </object-type>
-        <object-type name="Player" sid="565221426961189">
+        <object-type name="M5_Player" sid="565221426961189">
             <plugin id="Sprite" />
             <animation-folder>
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="597269950158993" speed="5">
-                    <frame duration="1" hotspotX="0.504348" hotspotY="0.501672" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\BikeMan.png">
+                <animation framecount="4" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="597269950158993" speed="0">
+                    <frame duration="1" hotspotX="0.504348" hotspotY="0.501672" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\BikeMan1.png">
                         <collision-poly>
                             <point x="0.46087" y="0.177258" />
                             <point x="0.495652" y="0.0133779" />
@@ -374,23 +373,57 @@
                             <point x="0.026087" y="0.498328" />
                         </collision-poly>
                     </frame>
-                    <frame duration="1" hotspotX="0.504348" hotspotY="0.501672">
+                    <frame duration="1" hotspotX="0.504348" hotspotY="0.501672" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\BikeMan2.png">
                         <collision-poly>
                             <point x="0.46087" y="0.177258" />
-                            <point x="0.495652" y="0.0133779" />
+                            <point x="0.495652" y="0.0100334" />
                             <point x="0.504348" y="0.190635" />
                             <point x="0.956522" y="0.498328" />
                             <point x="0.547826" y="0.826087" />
-                            <point x="0.495652" y="0.989967" />
+                            <point x="0.495652" y="0.993311" />
+                            <point x="0.443478" y="0.829431" />
+                            <point x="0.026087" y="0.498328" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.504348" hotspotY="0.501672" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\BikeMan3.png">
+                        <collision-poly>
+                            <point x="0.46087" y="0.177258" />
+                            <point x="0.495652" y="0.0100334" />
+                            <point x="0.504348" y="0.190635" />
+                            <point x="0.956522" y="0.498328" />
+                            <point x="0.547826" y="0.826087" />
+                            <point x="0.495652" y="0.993311" />
+                            <point x="0.443478" y="0.829431" />
+                            <point x="0.026087" y="0.498328" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.504348" hotspotY="0.501672">
+                        <collision-poly>
+                            <point x="0.46087" y="0.177258" />
+                            <point x="0.495652" y="0.0100334" />
+                            <point x="0.504348" y="0.190635" />
+                            <point x="0.956522" y="0.498328" />
+                            <point x="0.547826" y="0.826087" />
+                            <point x="0.495652" y="0.993311" />
                             <point x="0.443478" y="0.829431" />
                             <point x="0.026087" y="0.498328" />
                         </collision-poly>
                     </frame>
                 </animation>
                 <animation framecount="1" loop="0" name="Ded" pingpong="0" repeatcount="1" repeatto="0" sid="853205226848390" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Dead Bike Man.png">
+                        <collision-poly>
+                            <point x="0.366667" y="0.256667" />
+                            <point x="0.5" y="0.196667" />
+                            <point x="0.933333" y="0.0466667" />
+                            <point x="0.985714" y="0.5" />
+                            <point x="0.933333" y="0.953333" />
+                            <point x="0.152381" y="0.893333" />
+                            <point x="0.304762" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
-                <animation framecount="4" loop="1" name="Gear2" pingpong="0" repeatcount="1" repeatto="0" sid="673137373570771" speed="5">
+                <animation framecount="4" loop="1" name="Gear2" pingpong="0" repeatcount="1" repeatto="0" sid="472426157626125" speed="15">
                     <frame duration="1" hotspotX="0.504348" hotspotY="0.501672">
                         <collision-poly>
                             <point x="0.46087" y="0.177258" />
@@ -406,11 +439,11 @@
                     <frame duration="1" hotspotX="0.504348" hotspotY="0.501672">
                         <collision-poly>
                             <point x="0.46087" y="0.177258" />
-                            <point x="0.495652" y="0.0133779" />
+                            <point x="0.495652" y="0.0100334" />
                             <point x="0.504348" y="0.190635" />
                             <point x="0.956522" y="0.498328" />
                             <point x="0.547826" y="0.826087" />
-                            <point x="0.495652" y="0.989967" />
+                            <point x="0.495652" y="0.993311" />
                             <point x="0.443478" y="0.829431" />
                             <point x="0.026087" y="0.498328" />
                         </collision-poly>
@@ -418,11 +451,11 @@
                     <frame duration="1" hotspotX="0.504348" hotspotY="0.501672">
                         <collision-poly>
                             <point x="0.46087" y="0.177258" />
-                            <point x="0.495652" y="0.0133779" />
+                            <point x="0.495652" y="0.0100334" />
                             <point x="0.504348" y="0.190635" />
                             <point x="0.956522" y="0.498328" />
                             <point x="0.547826" y="0.826087" />
-                            <point x="0.495652" y="0.989967" />
+                            <point x="0.495652" y="0.993311" />
                             <point x="0.443478" y="0.829431" />
                             <point x="0.026087" y="0.498328" />
                         </collision-poly>
@@ -430,11 +463,11 @@
                     <frame duration="1" hotspotX="0.504348" hotspotY="0.501672">
                         <collision-poly>
                             <point x="0.46087" y="0.177258" />
-                            <point x="0.495652" y="0.0133779" />
+                            <point x="0.495652" y="0.0100334" />
                             <point x="0.504348" y="0.190635" />
                             <point x="0.956522" y="0.498328" />
                             <point x="0.547826" y="0.826087" />
-                            <point x="0.495652" y="0.989967" />
+                            <point x="0.495652" y="0.993311" />
                             <point x="0.443478" y="0.829431" />
                             <point x="0.026087" y="0.498328" />
                         </collision-poly>
@@ -442,21 +475,21 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Road" sid="303341840460368">
+        <object-type name="M5_Road" sid="303341840460368">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Road" pingpong="0" repeatcount="1" repeatto="0" sid="218321817713323" speed="5">
-                    <frame duration="1" hotspotX="0.500754" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Road.png" />
+                    <frame duration="1" hotspotX="0.50125" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Road Straight No Bike Lane.png" />
                 </animation>
                 <animation framecount="1" loop="0" name="Grass" pingpong="0" repeatcount="1" repeatto="0" sid="201240052409363" speed="5">
-                    <frame duration="1" hotspotX="0.500754" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\grass.png" />
+                    <frame duration="1" hotspotX="0.50125" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Dirt Path.png" />
                 </animation>
                 <animation framecount="1" loop="0" name="BikeLane" pingpong="0" repeatcount="1" repeatto="0" sid="573859862240281" speed="5">
-                    <frame duration="1" hotspotX="0.500754" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.50125" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Road Bike Lane.png" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="DisplayCar" sid="751042280091739">
+        <object-type name="M5_DisplayCar" sid="751042280091739">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Rotate" sid="857407709043882">
@@ -509,15 +542,26 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Hazard" sid="180910444753494">
+        <object-type name="M5_Hazard" sid="180910444753494">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Pothole" pingpong="0" repeatcount="1" repeatto="0" sid="974224846572141" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Pothole.png">
+                        <collision-poly>
+                            <point x="0.193333" y="0.193333" />
+                            <point x="0.5" y="0.06" />
+                            <point x="0.833333" y="0.166667" />
+                            <point x="0.973333" y="0.5" />
+                            <point x="0.92" y="0.92" />
+                            <point x="0.5" y="0.973333" />
+                            <point x="0.1" y="0.9" />
+                            <point x="0.02" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="IntersectionCar" sid="995767030355960">
+        <object-type name="M5_IntersectionCar" sid="995767030355960">
             <plugin id="Sprite" />
             <instance-variables>
                 <instance-variable name="Activated" sid="240079034123897" type="number" />
@@ -573,13 +617,10 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type global="1" name="RoadMap" sid="649748817511214">
+        <object-type global="1" name="M5_RoadMap" sid="649748817511214">
             <plugin id="Arr" />
         </object-type>
-        <object-type name="Timer" sid="850638894637158">
-            <plugin id="progressbar" />
-        </object-type>
-        <object-type name="TimerImage" sid="267291763123085">
+        <object-type name="M5_TimerImage" sid="267291763123085">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="525188867196784" speed="5">
@@ -587,11 +628,11 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="NewTimer" sid="154438006556931">
+        <object-type name="M5_NewTimer" sid="154438006556931">
             <plugin id="TiledBg" />
             <texture />
         </object-type>
-        <object-type name="TimerIcon" sid="230972773870264">
+        <object-type name="M5_TimerIcon" sid="230972773870264">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="151139402706138" speed="5">
@@ -599,12 +640,39 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="ScoreText" sid="613128485224307">
+        <object-type name="M5_ScoreText" sid="613128485224307">
             <plugin id="Text" />
+        </object-type>
+        <object-type name="M5_Intersection" sid="221834986359441">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="916862086256294" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Intersection.png">
+                        <collision-poly>
+                            <point x="0.091" y="0.091" />
+                            <point x="0.5" y="0.12" />
+                            <point x="0.911" y="0.089" />
+                            <point x="1" y="0.5" />
+                            <point x="0.889" y="0.889" />
+                            <point x="0.5" y="0.871" />
+                            <point x="0.109" y="0.891" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="m5_r4Intersection" sid="235746039391222">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="984306469592959" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\GitHub Repos\WilLauBikeGame\Textures\Road Straight No Bike Lane.png" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families>
-        <family name="EndScreen" plugin-id="Sprite" sid="791596004154438">
+        <family name="M5_EndScreen" plugin-id="Sprite" sid="791596004154438">
             <members>
                 <member>Exit</member>
                 <member>Retry</member>
@@ -615,23 +683,23 @@
         </family>
     </families>
     <layout-folder>
-        <layout>Gameplay.xml</layout>
-        <layout>Intro.xml</layout>
-        <layout>Tutorial.xml</layout>
+        <layout>M5_Gameplay.xml</layout>
+        <layout>M5_Intro.xml</layout>
+        <layout>M5_Tutorial.xml</layout>
     </layout-folder>
     <event-folder>
-        <event-sheet>GameplaySheet.xml</event-sheet>
-        <event-sheet>IntroSheet.xml</event-sheet>
+        <event-sheet>M5_GameplaySheet.xml</event-sheet>
+        <event-sheet>M5_IntroSheet.xml</event-sheet>
         <event-sheet>Event sheet 1.xml</event-sheet>
     </event-folder>
     <global-instances>
-        <global-instance type="Touch" uid="2">
+        <global-instance type="M5_Touch" uid="2">
             <properties>
                 <use-mouse-input>Yes</use-mouse-input>
             </properties>
         </global-instance>
-        <global-instance type="BikeMovement" uid="3" />
-        <global-instance type="Keyboard" uid="4" />
+        <global-instance type="M5_BikeMovement" uid="3" />
+        <global-instance type="M5_Keyboard" uid="4" />
     </global-instances>
     <sounds-folder />
     <music-folder />

@@ -10,11 +10,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="0">Gameplay</layout>
-        <layout order="2">Intro</layout>
-        <layout order="4">Tutorial</layout>
-        <event-sheet active="1" order="1">GameplaySheet</event-sheet>
-        <event-sheet order="3">IntroSheet</event-sheet>
+        <layout active="1" order="0">M5_Gameplay</layout>
+        <layout order="3">M5_Tutorial</layout>
+        <event-sheet order="1">M5_GameplaySheet</event-sheet>
+        <event-sheet order="2">M5_IntroSheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -23,7 +22,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="1" name="Configuration Settings" />
     </properties>
     <families-expanded root="1">
-        <family expanded="0" name="EndScreen" />
+        <family expanded="0" name="M5_EndScreen" />
     </families-expanded>
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />
@@ -39,19 +38,21 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/Retry/" />
         <folder expanded="1" path="animation-folder/Exit/" />
         <folder expanded="1" path="animation-folder/Star/" />
-        <folder expanded="1" path="animation-folder/LeftPedal/" />
-        <folder expanded="1" path="animation-folder/RightPedal/" />
-        <folder expanded="1" path="animation-folder/Brakes/" />
-        <folder expanded="1" path="animation-folder/Minimap/" />
-        <folder expanded="1" path="animation-folder/MinimapIcon/" />
-        <folder expanded="1" path="animation-folder/BikeObstacle/" />
-        <folder expanded="1" path="animation-folder/CarMinimapIcon/" />
-        <folder expanded="1" path="animation-folder/Player/" />
-        <folder expanded="1" path="animation-folder/Road/" />
-        <folder expanded="1" path="animation-folder/DisplayCar/" />
-        <folder expanded="1" path="animation-folder/Hazard/" />
-        <folder expanded="1" path="animation-folder/IntersectionCar/" />
-        <folder expanded="1" path="animation-folder/TimerImage/" />
-        <folder expanded="1" path="animation-folder/TimerIcon/" />
+        <folder expanded="1" path="animation-folder/M5_LeftPedal/" />
+        <folder expanded="1" path="animation-folder/M5_RightPedal/" />
+        <folder expanded="1" path="animation-folder/M5_Brakes/" />
+        <folder expanded="1" path="animation-folder/M5_Minimap/" />
+        <folder expanded="1" path="animation-folder/M5_MinimapIcon/" />
+        <folder expanded="1" path="animation-folder/M5_BikeObstacle/" />
+        <folder expanded="1" path="animation-folder/M5_CarMinimapIcon/" />
+        <folder expanded="1" path="animation-folder/M5_Player/" />
+        <folder expanded="1" path="animation-folder/M5_Road/" />
+        <folder expanded="1" path="animation-folder/M5_DisplayCar/" />
+        <folder expanded="1" path="animation-folder/M5_Hazard/" />
+        <folder expanded="1" path="animation-folder/M5_IntersectionCar/" />
+        <folder expanded="1" path="animation-folder/M5_TimerImage/" />
+        <folder expanded="1" path="animation-folder/M5_TimerIcon/" />
+        <folder expanded="1" path="animation-folder/M5_Intersection/" />
+        <folder expanded="1" path="animation-folder/m5_r4Intersection/" />
     </folders-expanded>
 </c2uistate>
